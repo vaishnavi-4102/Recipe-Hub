@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        
+        <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <h2>Login Page</h2>
+            <hr>
+            <div class="mb-3">
+                <label for="UserName" name="username" class="form-label">Username</label>
+                <input  required type="text" class="form-control" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="Password" name="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <p>Don't have an account?<a href="/register/">Register</a></p>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

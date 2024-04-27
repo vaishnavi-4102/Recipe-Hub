@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Update Reciepe</h2>
+            <hr>
+            <div class="mb-3">
+                <label for="recipeName" name="recipe_name" class="form-label">Recipe Name</label>
+                <input value="{{object.recipe_name}}" required type="text" class="form-control" name="recipe_name">
+            </div>
+            <div class="mb-3">
+                <label for="recipeDescription" name="recipe_description" class="form-label">Recipe Description</label>
+                <textarea class="form-control" name="recipe_description" required type="text">{{object.recipe_description}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="recipeImage" name="recipe_image" class="form-label">Recipe Image</label>
+                <input type="file" class="form-control-file" name="recipe_image">
+            </div>
+            <button type="submit" class="btn btn-success">Update Reciepe</button>
+        </form>
+    </div>
+</body>
+
+</html>

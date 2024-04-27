@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form action="">
+        <div class="mt-5">
+            <div class="mx-auto col-6">
+                <div class="mb-3">
+                    <label for="Search" name="Search" class="form-label">Search</label>
+                    <input  type="text" class="form-control" name="Search">
+                    <button type="submit" class="btn btn-primary">Enter</button>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </form>
+        <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Add Reciepe</h2>
+            <hr>
+            <div class="mb-3">
+                <label for="recipeName" name="recipe_name" class="form-label">Recipe Name</label>
+                <input required type="text" class="form-control" name="recipe_name">
+            </div>
+            <div class="mb-3">
+                <label for="recipeDescription" name="recipe_description" class="form-label">Recipe Description</label>
+                <textarea class="form-control" name="recipe_description" required type="text"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="recipeImage" name="recipe_image" class="form-label">Recipe Image</label>
+                <input type="file" class="form-control-file" name="recipe_image">
+            </div>
+            <button type="submit" class="btn btn-success">Add Reciepe</button>
+        </form>
+
+        
+    </div>
+    {{QuerySet}}
+    <table class="table table-bordered mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Reciepe</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col"> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for r in Recipe %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{r.recipe_name}}</td>
+                <td>{{r.recipe_description}}</td>
+                <!-- <td>{{r.reciepe_image}}</td> -->
+
+                <td><img src="{{ r.recipe_image.url}}" style="height: 200px;"></td>
+                <td>
+                    <a href="/delete/{{r.id}}/" class="btn btn-danger">Delete Item</button>
+                </td>
+                <td><a href="/update/{{r.id}}/" class="btn btn-primary">Update Item </button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body>
+
+</html>
